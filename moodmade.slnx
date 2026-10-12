@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="moodmade.vcxproj" Id="01fd6a0c-2a25-4313-b363-119f36705e05" />
+</Solution>
