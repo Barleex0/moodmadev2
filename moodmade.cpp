@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <limits>
+#include <fstream>
 
 const int ARRAYSIZE = 20;
 
@@ -243,6 +244,90 @@ MoodEntry MoodTracker::getLowestMood() const {
 int MoodTracker::getEntryCount() const {
 	return entryCount;
 };
+
+
+
+
+class WellnessEntry : public MoodEntry
+{
+public:
+	WellnessEntry();
+	void sleepSet(double x);
+	void exeSet(int x);
+	const double sleepGet();
+	const int exeGet();
+private:
+	double sleepHours;
+	int ExerciseMinutes;
+};
+
+
+
+void WellnessEntry::sleepSet(double x) {
+	if (x <= 24 && x >= 0) {
+		sleepHours = x;
+	}
+	else {
+		std::cout << "Sleep hours are out of range please enter a number between 0-24 \n";
+	};
+};
+void WellnessEntry::exeSet(int x) {
+	if (x <= 1440 && x >= 0) {
+		ExerciseMinutes = x;
+	}
+	else {
+		std::cout << "Sleep hours are out of range please enter a number between 0-1440 \n";
+	};
+};
+double const WellnessEntry::sleepGet() {
+	return sleepHours;
+};
+int const WellnessEntry::exeGet() {
+	return ExerciseMinutes;
+};
+
+
+WellnessEntry::WellnessEntry()
+{
+	sleepHours = 0;
+	ExerciseMinutes = 0;
+	setDate();
+	setRating();
+	setNote();
+}
+
+
+
+
+class WellTracker
+{
+public:
+	WellTracker();
+		void addEntry( MoodEntry& entry);
+
+	void displayEntries() const;
+
+	double calculateAverage() const;
+
+	MoodEntry getHighestMood() const;
+
+	MoodEntry getLowestMood() const;
+
+	int getEntryCount() const;
+
+
+private:
+	WellnessEntry track[20];
+	int entryCount;
+	void addentry();
+
+};
+
+WellTracker::WellTracker()
+{
+}
+
+
 
 
 
